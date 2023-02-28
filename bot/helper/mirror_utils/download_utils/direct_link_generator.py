@@ -97,6 +97,10 @@ def direct_link_generator(link: str):
         return filepress(link)
     elif any(x in link for x in fmed_list):
         return fembed(link)
+    elif any(x in link for x in ['vanfem.com', 'javpoll.com']):
+        return lowfembed(link)
+    elif any(x in link for x in ['suzihaza.com']):
+        return medfembed(link)
     elif any(x in link for x in ['sbembed.com', 'watchsb.com', 'streamsb.net', 'sbplay.org']):
         return sbembed(link)
     else:
@@ -374,6 +378,23 @@ def fembed(link: str) -> str:
     lst_link = [dl_url[i] for i in dl_url]
     return lst_link[count-1]
 
+def lowfembed(link: str) -> str:
+    """ Fembed direct link generator
+    Based on https://github.com/zevtyardt/lk21
+    """
+    dl_url = Bypass().bypass_fembed(link)
+    count = len(dl_url)
+    lst_link = [dl_url[i] for i in dl_url]
+    return lst_link[count-3]
+
+def medfembed(link: str) -> str:
+    """ Fembed direct link generator
+    Based on https://github.com/zevtyardt/lk21
+    """
+    dl_url = Bypass().bypass_fembed(link)
+    count = len(dl_url)
+    lst_link = [dl_url[i] for i in dl_url]
+    return lst_link[count-2]
 
 def sbembed(link: str) -> str:
     """ Sbembed direct link generator
