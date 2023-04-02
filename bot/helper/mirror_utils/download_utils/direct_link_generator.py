@@ -394,7 +394,7 @@ def medfembed(link: str) -> str:
     dl_url = Bypass().bypass_fembed(link)
     count = len(dl_url)
     lst_link = [dl_url[i] for i in dl_url]
-    return lst_link[count-3]
+    return lst_link[count-2]
 
 def sbembed(link: str) -> str:
     """ Sbembed direct link generator
